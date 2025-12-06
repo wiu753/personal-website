@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --link: #2a4cb2;
+  --link-hover: #1f3a8a;
+}
+
+html {
+  font-size: clamp(14px, 2.5vw, 20px);
+}
+
+body {
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+main,
+.site-header {
+  max-width: 35rem;
+  margin-left: 1.5rem;
+  margin-right: auto;
+}
+
+@media (min-width: 900px) {
+  main,
+  .site-header {
+    margin-left: 8vw;
+  }
+}
+
+/* Header title */
+.site-title {
+  font-size: 6rem;
+  margin: 6rem 0 1rem 0;
+
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  letter-spacing: 0.2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+/* Mobile heading tweak */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 3.5rem;
+    margin-top: 3rem;
+  }
+}
