@@ -1,0 +1,150 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Color system */
+:root {
+  color-scheme: light dark;
+
+  --bg: #ffffff;
+  --text: #222222;
+  --muted: #666666;
+  --border: #dddddd;
+  --link: #2a4cb2;
+  --link-hover: #1f3a8a;
+}
+
+/* Use system preference as default */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #050608;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #2d2d2d;
+    --link: #93c5fd;
+    --link-hover: #bfdbfe;
+  }
+}
+
+/* Fluid, comfortable text size */
+html {
+  font-size: clamp(14px, 2.5vw, 20px);
+}
+
+body {
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+/* Main column on the left */
+main,
+.site-header {
+  max-width: 35rem;
+  margin-left: 1.5rem;
+  margin-right: auto;
+}
+
+/* More breathing room on large screens */
+@media (min-width: 900px) {
+  main,
+  .site-header {
+    margin-left: 8vw;
+  }
+}
+
+/* Header title */
+.site-title {
+  font-size: 6rem;
+  margin: 6rem 0 1rem 0;
+
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+}
+
+/* Sections */
+.section {
+  margin: 2rem 0;
+}
+
+/* Link styling */
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+  letter-spacing: 0.2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+/* Mobile heading tweak */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 3.5rem;
+    margin-top: 3rem;
+  }
+}
+
+/* Manual theme overrides via data-theme */
+body[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #222222;
+  --muted: #666666;
+  --border: #dddddd;
+  --link: #2a4cb2;
+  --link-hover: #1f3a8a;
+}
+
+body[data-theme="dark"] {
+  --bg: #050608;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #2d2d2d;
+  --link: #93c5fd;
+  --link-hover: #bfdbfe;
+}
+
+/* Global top-right toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.6rem; /* sun/moon icon size */
+  padding: 0.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+
+  opacity: 0.8;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  opacity: 0.55;
+}

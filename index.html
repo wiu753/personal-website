@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Martin Wiu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal website of Martin." />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <span class="icon">☀️</span>
+    </button>
+
+    <header class="site-header">
+      <h1 class="site-title">Martin Wiu</h1>
+    </header>
+
+    <main>
+      <section class="section">
+        <p>
+          Mahatma Gandhi said, "happiness is when what you think, what you say,
+          and what you do are in harmony". My values center on a few areas: the
+          relationships that shape my life, the habits that sustain my health,
+          the work that lets me contribute something meaningful, and the
+          personal growth that keeps me moving forward. These areas capture what
+          I return to again and again: connection, well-being, impact, and
+          continual learning.
+        </p>
+
+        <p>
+          It’s important to me that my software engineering career contributes
+          to real-world impact. If you’re curious about how to approach
+          high-impact work, I recommend exploring the non-profit
+          <a href="https://80000hours.org/career-guide/">80,000 Hours</a>. My
+          engineering philosophy follows the spirit of Edsger Dijkstra and
+          Leonardo da Vinci: simplicity is the highest form of quality. In
+          becoming a better engineer, I focus on doing work that matters and
+          leaning into my strengths. I’m comfortable working across languages,
+          technologies, and problem domains, and I can take on the roles a team
+          needs—whether leading a group or contributing individually.
+        </p>
+
+        <p>
+          You can find my writings on
+          <a
+            href="https://martinwiu.substack.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Substack</a
+          >, and my code on
+          <a
+            href="https://github.com/wiu753"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >. If you’d like to get in touch, feel free to email
+          <a href="mailto:martinwiu@proton.me">martinwiu@proton.me</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const storageKey = "theme";
+        const body = document.body;
+        const button = document.querySelector(".theme-toggle");
+
+        if (!button) return;
+
+        const icon = button.querySelector(".icon");
+
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        const saved = localStorage.getItem(storageKey);
+        const initialTheme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : prefersDark
+              ? "dark"
+              : "light";
+
+        function applyTheme(theme) {
+          body.dataset.theme = theme;
+          localStorage.setItem(storageKey, theme);
+          if (icon) {
+            icon.textContent = theme === "dark" ? "🌙" : "☀️";
+          }
+        }
+
+        applyTheme(initialTheme);
+
+        button.addEventListener("click", () => {
+          const next = body.dataset.theme === "dark" ? "light" : "dark";
+          applyTheme(next);
+        });
+      })();
+    </script>
+  </body>
+</html>
