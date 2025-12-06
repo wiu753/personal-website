@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Martin Wiu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal website of Martin." />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <span class="icon">🌙</span>
+    </button>
+
+    <header class="site-header">
+      <h1 class="site-title">Martin Wiu</h1>
+    </header>
+
+    <main>
+      <section class="section">
+        <p>
+          Hello! I’m Martin Wiu, a 30-year-old software engineer from Norway.
+        </p>
+        <p>
+          I currently work at
+          <a href="https://www.kongsberg.com/">KONGSBERG</a> as an individual
+          contributor, developing surveillance systems within the maritime
+          security domain. While most of my professional work is closed-source,
+          my side projects are available on
+          <a href="https://github.com/wiu753">GitHub</a>. I support the
+          non-profit organization
+          <a href="https://80000hours.org/career-guide/">80,000 Hours</a>, which
+          I highly recommend if you’re interested in learning how to use your
+          career to do good. In my free time, I enjoy meditating and reading
+          about psychology and philosophy. I’m also working on becoming a better
+          communicator, both verbally and in writing, which is why one of my
+          goals for 2026 is to
+          <a href="https://martinwiu.substack.com/">write articles</a>
+          to practice my writing skills. I’m also a long-distance triathlete!
+        </p>
+        <p>
+          If you’d like to get in touch, feel free to email me at
+          <a href="mailto:martinwiu@proton.me">martinwiu@proton.me</a>.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const storageKey = "theme";
+        const body = document.body;
+        const button = document.querySelector(".theme-toggle");
+
+        if (!button) return;
+
+        const icon = button.querySelector(".icon");
+
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        const saved = localStorage.getItem(storageKey);
+        const initialTheme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : prefersDark
+              ? "dark"
+              : "light";
+
+        function applyTheme(theme) {
+          body.dataset.theme = theme;
+          localStorage.setItem(storageKey, theme);
+          if (icon) {
+            icon.textContent = theme === "dark" ? "☀️" : "🌙";
+          }
+        }
+
+        applyTheme(initialTheme);
+
+        button.addEventListener("click", () => {
+          const next = body.dataset.theme === "dark" ? "light" : "dark";
+          applyTheme(next);
+        });
+      })();
+    </script>
+  </body>
+</html>
